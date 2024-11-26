@@ -1,0 +1,43 @@
+#ifdef _MSC_VER
+#define _CRT_SECURE_NO_WARNINGS
+#endif
+#include <iostream>
+
+struct player
+{
+	int numerid;
+	char name[50];
+	int scores;
+};
+
+int main()
+{
+	player odczyt[10];
+	player pl1[10];
+
+	for (int i = 0; i < 10; i++)
+	{
+		pl1[i].numerid = i;
+		pl1[i].scores = i + 2;
+		std::cin >> pl1[i].name;
+	}
+
+	FILE* fp;
+	fp = fopen("project.txt", "w+b");
+	fwrite(&pl1, sizeof(player), 10, fp);
+	fclose(fp);
+
+	fp = fopen("project.txt", "r+b");
+	fread(&odczyt, sizeof(player), 10, fp);
+	for (int j = 0; j < 10; j++) {
+		std::cout<<odczyt[j].name<<std::endl;
+		std::cout << odczyt[j].scores << std::endl;
+		std::cout << odczyt[j].numerid << std::endl;
+
+	}
+	fclose(fp);
+	
+
+
+
+}
