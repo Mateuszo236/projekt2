@@ -1,0 +1,106 @@
+class interfejs {
+	protected:
+		sf::Text *tl;
+		sf::Text *tr;
+		sf::Text *bc;
+		sf::Font *czcionka;
+		sf::RectangleShape *pole;
+		sf::Vector2f bounds;
+		sf::Vector2f innerBounds;
+		sf::RenderWindow *window;
+		//void init();
+	public:
+		interfejs(sf::Vector2f bounds_p, sf::RenderWindow* win) {
+			bounds = bounds_p;
+			window = win;
+			init();
+		}
+		~interfejs() {
+			delete czcionka;
+			delete tl;
+			delete bc;
+			delete pole;
+			delete window;
+		};//destruktor
+		//void draw();
+		void init(){
+			bc = new sf::Text;
+			tr = new sf::Text;
+			tl = new sf::Text;
+			pole = new sf::RectangleShape;
+			czcionka = new sf::Font;
+			czcionka->loadFromFile("arial.ttf");
+			tl->setFont(*czcionka);
+			tr->setFont(*czcionka);
+			bc->setFont(*czcionka);
+
+			tl->setPosition(10, 5);
+			tr->setPosition(bounds.x-200, 5);
+			bc->setPosition(bounds.x/3, bounds.y-30);
+
+			tl->setCharacterSize(28);
+			tr->setCharacterSize(28);
+			bc->setCharacterSize(20);
+
+			tl->setFillColor(sf::Color::Blue);
+			tr->setFillColor(sf::Color::Red);
+			bc->setFillColor(sf::Color::White);
+
+			tl->setString("left top");
+			tr->setString("Right top"); 
+			bc->setString("Bottom centre");
+			innerBounds.x = bounds.x - 45;
+			innerBounds.y = bounds.y - 80;
+			pole->setPosition(22, 50);
+			pole->setSize(innerBounds);
+			pole->setFillColor(sf::Color::Blue);
+			}
+		void draw() {
+			
+			window->draw(*tl);
+			window->draw(*tr);
+			window->draw(*bc);
+			window->draw(*pole);
+		}
+
+
+
+};
+#include <SFML/Graphics.hpp>
+#include <iostream>
+#include <random>
+
+int main()
+{
+	sf::Vector2f wymiary;
+	wymiary.x = 600;
+	wymiary.y = 600;
+	sf::RenderWindow window(sf::VideoMode(wymiary.x, wymiary.y), "SFML animation");
+	sf::Event event;
+	
+	interfejs obiekt(sf::Vector2f(400,400), &window);
+
+	interfejs wyglad(wymiary, &window);
+
+	while (window.isOpen())
+	{
+		while (window.pollEvent(event))
+		{
+			if (event.type == sf::Event::Closed)
+				window.close();
+		}
+		window.clear();
+		wyglad.draw();
+		window.display();
+		
+	}
+
+
+
+	
+	
+	
+	return 0;
+
+		
+}
