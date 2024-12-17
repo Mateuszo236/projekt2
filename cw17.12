@@ -1,0 +1,119 @@
+#include <iostream>
+#include <algorithm>
+#include <string>
+#include <vector>
+
+void drukuj(std::vector<int> liczby)
+{
+    for (auto& i : liczby)
+        std::cout << i << " ";
+    std::cout << " " << std::endl;
+}
+void wyszukaj(std::vector<int> liczby) 
+{
+    int znal;//fałsz
+    int nzl;//prawda
+    std::cout << "Podaj k : ";
+    int k;
+    std::cin >> k;
+    for (int i = 0; i < liczby.size(); i++)
+        if (liczby[i] == k)
+            std::cout << "znaleziono " << liczby[i] << ", indeks: " << i << "\n";
+        
+    
+}
+
+
+int main()
+{   //tworzony wektor liczb int - 4 dowolne liczby całkowite
+    std::vector<int> liczby = { 1,5,6,9 };
+    for (auto& i : liczby)//drukowanie danych zawartych w kotenerze
+            std::cout << i << " ";
+    std::cout << " " << std:: endl;
+
+    std::cout << liczby.size() << std::endl;
+    
+
+
+    //3 dowolone liczby umieszcane na końcu kontenera
+    liczby.push_back(10);
+    liczby.push_back(15);
+    liczby.push_back(20);
+    
+
+    for (auto& i : liczby)
+        std::cout << i << " ";
+    std::cout << "\n";
+    std::cout << liczby.size() << std::endl;
+
+    liczby.pop_back();//usuwanie ostatniego elementu wektora
+    for (auto& i : liczby)
+        std::cout << i << " ";
+    std::cout << "\n";
+    std::cout << liczby.size() << std::endl;
+    drukuj(liczby);
+    //sortiowanie
+    liczby.push_back(10);
+    liczby.push_back(15);
+    liczby.push_back(9);
+    liczby.push_back(20);//zastępuje zrobienie nowego wektora
+    drukuj(liczby);
+    wyszukaj(liczby);
+    std::vector<std::string> kakoko = {"dawid", "hermetyzacja"};
+    kakoko.erase(kakoko.begin()+3);
+    drukuj(liczby);
+
+
+
+    
+    
+    
+
+
+
+
+
+    /*for (auto& i : liczby)
+        std::cout << i << " ";
+    std::cout << "\n";
+    std::vector<int>::iterator it;
+    it = liczby.begin();
+    liczby.insert(it, 2, 13);
+
+    for (auto& i : liczby)
+        std::cout << i << " ";
+    std::cout << "\n";
+
+    int k = 5;
+    it = liczby.begin();
+    for (int i = 0; i < liczby.size(); i++)
+        if (liczby[i] == k)
+            std::cout << "znaleziono " << liczby[i] << ", indeks: " << i << "\n";
+    std::sort(liczby.begin(), liczby.begin() + liczby.size());
+    for (auto& i : liczby)
+        std::cout << i << " ";
+    std::cout << "\n";
+
+    return 0;*/
+
+
+
+
+    //std::cout << "Hello World!\n";
+    //std::vector<int> t = { 1,3,9 };
+    //t.push_back(27);
+    //for (int i = 0; i > t.size(); i++)
+    //    std::cout << t[i] << " ";
+    //for (int &el : t) {//referencja
+    //    std::cout << el << " ";
+    //    el = el * 3;
+    //}
+    //auto y=10;
+
+
+
+
+    //zad.1-5
+
+}
+
